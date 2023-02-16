@@ -45,7 +45,7 @@ pipeline {
         stage ('Deploy Frontend') {
             steps {
                 dir('frontend') {
-                    git credentialsId: 'github_login', url: 'https://github.com/wcaquino/tasks-frontend'
+                    git credentialsId: 'github_login', url: 'https://github.com/Kauantulio/tasks-frontend'
                     bat 'mvn clean package'
                     deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
                 }
@@ -54,7 +54,7 @@ pipeline {
         stage ('Functional Test') {
             steps {
                 dir('functional-test') {
-                    git credentialsId: 'github_login', url: 'https://github.com/wcaquino/tasks-functional-tests'
+                    git credentialsId: 'github_login', url: 'https://github.com/Kauantulio/tests-functional-test'
                     bat 'mvn test'
                 }
             }
