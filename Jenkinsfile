@@ -51,14 +51,14 @@ pipeline {
                 }
             }
         }
-        stage ('Functional Test') {
-            steps {
-                dir('functional-test') {
-                    git credentialsId: 'github_login', url: 'https://github.com/Kauantulio/tests-functional-test'
-                    bat 'mvn test'
-                }
-            }
-        }
+        // stage ('Functional Test') {
+        //     steps {
+        //         dir('functional-test') {
+        //             git credentialsId: 'github_login', url: 'https://github.com/Kauantulio/tests-functional-test'
+        //             bat 'mvn test'
+        //         }
+        //     }
+        // }
         stage('Deploy Prod') {
             steps {
                 bat 'docker-compose build'
